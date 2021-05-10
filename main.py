@@ -1,6 +1,7 @@
 import datetime
 import genshinstats
 import time
+import requests
 
 genshinstats.set_cookie(account_id=YOUR_ACCOUNT_ID, cookie_token="YOUR_COOKIE_TOKEN")  # login
 
@@ -19,5 +20,10 @@ def daily_check_in():
 if __name__ == '__main__':
     while True:
         print(datetime.datetime.now())
-        daily_check_in()
-        time.sleep(3600)
+
+        try:
+            daily_check_in()
+            time.sleep(3600)
+        except requests.ConnectionError:
+            print("Problem with Connection, retrying ...")
+
