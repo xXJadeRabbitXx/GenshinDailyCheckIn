@@ -3,14 +3,14 @@ import genshinstats
 import time
 import requests
 
-genshinstats.set_cookie(account_id=YOUR_ACCOUNT_ID, cookie_token="YOUR_COOKIE_TOKEN")  # login
+genshinstats.set_cookie(account_id="<account id as int>", cookie_token="<cookie token as string>")  # login
 
 def daily_check_in():
     info = genshinstats.get_daily_reward_info()
-    print('total rewards claimed:', info['total_sign_day'])
+    print('total rewards claimed:', info[1])
 
     # return true, if sign in successful; false otherwise
-    if genshinstats.sign_in():
+    if genshinstats.claim_daily_reward():
         print("Reward successfully claimed")
     else:
         print("Reward already claimed")
