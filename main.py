@@ -23,7 +23,8 @@ if __name__ == '__main__':
 
         try:
             daily_check_in()
-            time.sleep(3600)
+            time.sleep(28800) # Wait 8 hours
         except requests.ConnectionError:
             print("Problem with Connection, retrying ...")
-
+        except genshinstats.errors.GenshinStatsException:
+            print("Genshin Stats error, retrying ...")
